@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Key
+  - Sprint Zombie
+  - Jog Zombie
+  - Walk Zombie
+  - Door
   layers:
   - Default
   - TransparentFX

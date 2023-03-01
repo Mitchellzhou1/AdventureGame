@@ -36,15 +36,20 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other){
         if (other.CompareTag("Key")){
-            //hasKey = true;
+            hasKey = true;
             Destroy(other.gameObject);
-            print("THIS FUNCTIUON");
+
         }
         if (other.CompareTag("Sprint Zombie") || other.CompareTag("Jog Zombie") || other.CompareTag("Walk Zombie")){
             health -= 15;
         }
-        if (other.CompareTag("Door") && hasKey){
-            _gameManager.goToScene(nextLevel);
+        if (other.CompareTag("Door")){
+            if (hasKey){
+                hasKey = false;
+                _gameManager.goToScene(nextLevel);
+            }
+            else
+                print("You don't have the key! Please collect it and come back");
         }
     }
 }

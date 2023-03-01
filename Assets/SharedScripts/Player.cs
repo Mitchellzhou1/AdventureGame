@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
     Camera mainCam;
     bool hasKey;
     int health;
-    int maxHealth;
     public string nextLevel;
     
     void Start()
@@ -20,6 +19,7 @@ public class Player : MonoBehaviour
         mainCam = Camera.main;
         health = 100;
         hasKey = false;
+
     }
 
     
@@ -34,26 +34,22 @@ public class Player : MonoBehaviour
 
     }
 
-    void OnTriggerEnter(Collider other){
+    private void OnTriggerEnter(Collider other){
         if (other.CompareTag("Key")){
             hasKey = true;
             Destroy(other.gameObject);
+
         }
         if (other.CompareTag("Sprint Zombie") || other.CompareTag("Jog Zombie") || other.CompareTag("Walk Zombie")){
             health -= 15;
         }
-        if (other.CompareTag("Door") && hasKey){
-            _gameManager.goToScene(nextLevel);
+        if (other.CompareTag("Door")){
+            if (hasKey){
+                hasKey = false;
+                _gameManager.goToScene(nextLevel);
+            }
+            else
+                print("You don't have the key! Please collect it and come back");
         }
-
-        // healthpack
-        if (other.CompareTag("Healthpack")) {
-            health += other.gameObject.GetComponent<Healthpack>().getHealthAmount();
-            health = Mathf.Min(health, maxHealth);
-            Debug.Log("Medkit consumed, current HP: " + health);
-            Destroy(other.gameObject);
-        }
-
-        
     }
 }

@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void goToScene(string scene){
-        StartCoroutine(sceneHelper(scene, 3));
+        StartCoroutine(sceneHelper(scene, 1));
     }
 
     IEnumerator sceneHelper (string scene, int seconds) {

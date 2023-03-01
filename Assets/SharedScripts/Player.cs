@@ -17,7 +17,6 @@ public class Player : MonoBehaviour
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _gameManager = GameObject.FindObjectOfType<GameManager>();
         mainCam = Camera.main;
-        health = 100;
         hasKey = false;
 
     }
@@ -31,25 +30,29 @@ public class Player : MonoBehaviour
                 _navMeshAgent.destination = hit.point;
             }
         }
-
     }
 
     private void OnTriggerEnter(Collider other){
         if (other.CompareTag("Key")){
+            print("You have picked up the key");
             hasKey = true;
             Destroy(other.gameObject);
 
         }
-        if (other.CompareTag("Sprint Zombie") || other.CompareTag("Jog Zombie") || other.CompareTag("Walk Zombie")){
-            health -= 15;
+        else if (other.CompareTag("Sprint Zombie") || other.CompareTag("Jog Zombie") || other.CompareTag("Walk Zombie")){
+            print("THIs RAn");
+            _gameManager.healthChanger(-15);
         }
-        if (other.CompareTag("Door")){
+        else if (other.CompareTag("Door")){
             if (hasKey){
                 hasKey = false;
                 _gameManager.goToScene(nextLevel);
             }
             else
                 print("You don't have the key! Please collect it and come back");
+        }
+        else if (other.CompareTag("Healthpack")){
+            _gameManager.healthChanger(25);
         }
     }
 }

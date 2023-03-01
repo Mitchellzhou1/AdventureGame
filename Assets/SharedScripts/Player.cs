@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     Camera mainCam;
     bool hasKey;
     int health;
+    int maxHealth;
     public string nextLevel;
     
     void Start()
@@ -19,7 +20,6 @@ public class Player : MonoBehaviour
         mainCam = Camera.main;
         health = 100;
         hasKey = false;
-
     }
 
     
@@ -46,5 +46,15 @@ public class Player : MonoBehaviour
         if (other.CompareTag("Door") && hasKey){
             _gameManager.goToScene(nextLevel);
         }
+
+        // healthpack
+        if (other.CompareTag("Healthpack")) {
+            health += other.gameObject.GetComponent<Healthpack>().getHealthAmount();
+            health = Mathf.Min(health, maxHealth);
+            Debug.Log("Medkit consumed, current HP: " + health);
+            Destroy(other.gameObject);
+        }
+
+        
     }
 }

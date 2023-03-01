@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    // public string nextLevel;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void goToScene(string scene){
-        StartCoroutine(sceneHelper(scene, 1));
+        StartCoroutine(sceneHelper(scene, 3));
     }
 
     IEnumerator sceneHelper (string scene, int seconds) {

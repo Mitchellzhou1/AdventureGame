@@ -34,11 +34,10 @@ public class Player : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other){
+    void OnTriggerEnter(Collider other){
         if (other.CompareTag("Key")){
-            //hasKey = true;
+            hasKey = true;
             Destroy(other.gameObject);
-            print("THIS FUNCTIUON");
         }
         if (other.CompareTag("Sprint Zombie") || other.CompareTag("Jog Zombie") || other.CompareTag("Walk Zombie")){
             health -= 15;

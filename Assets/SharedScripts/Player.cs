@@ -40,7 +40,6 @@ public class Player : MonoBehaviour
 
         }
         else if (other.CompareTag("Sprint Zombie") || other.CompareTag("Jog Zombie") || other.CompareTag("Walk Zombie")){
-            print("THIs RAn");
             _gameManager.healthChanger(-15);
         }
         else if (other.CompareTag("Door")){
@@ -51,8 +50,8 @@ public class Player : MonoBehaviour
             else
                 print("You don't have the key! Please collect it and come back");
         }
-        else if (other.CompareTag("Healthpack")){
-            _gameManager.healthChanger(25);
-        }
+        // else if (other.CompareTag("Healthpack")){
+        //     _gameManager.healthChanger(25);
+        // }
     }
 }

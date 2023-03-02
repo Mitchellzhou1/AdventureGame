@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other){
-        if (other.CompareTag("Key")){
+        if (other.CompareTag("Key") && hasKey == false){
             print("You have picked up the key");
             hasKey = true;
             Destroy(other.gameObject);
@@ -42,6 +42,17 @@ public class Player : MonoBehaviour
         }
         else if (other.CompareTag("Sprint Zombie") || other.CompareTag("Jog Zombie") || other.CompareTag("Walk Zombie")){
             _gameManager.healthChanger(-15);
+        }
+        else if (other.CompareTag("OtherDoor"))
+        {
+            if (hasKey){
+                hasKey = false;
+                Destroy(other.gameObject);
+            }
+            else
+            {
+                print("You don't have the key! Please collect it and come back");
+            }
         }
         else if (other.CompareTag("Door")){
             if (hasKey){

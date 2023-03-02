@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
         }
         if (health < 1){
             health = 0;
-            //goToScene("Game Over")
+            goToScene("Death Screen");
         }
         healthUI.text = health.ToString();
     }

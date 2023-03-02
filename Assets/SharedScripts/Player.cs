@@ -26,7 +26,8 @@ public class Player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0)){
             RaycastHit hit;
-            if (Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out hit, 200)){
+            if (Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out hit, 300)){
+                print(hit.point);
                 _navMeshAgent.destination = hit.point;
             }
         }
@@ -50,8 +51,8 @@ public class Player : MonoBehaviour
             else
                 print("You don't have the key! Please collect it and come back");
         }
-        // else if (other.CompareTag("Healthpack")){
-        //     _gameManager.healthChanger(25);
-        // }
+        else if (other.CompareTag("Healthpack")){
+            _gameManager.healthChanger(25);
+        }
     }
 }

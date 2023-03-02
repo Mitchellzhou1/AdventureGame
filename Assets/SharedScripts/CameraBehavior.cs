@@ -34,12 +34,21 @@ public class CameraBehavior : MonoBehaviour
     {
 
         // use mouse wheel to zoom in or out.
+        //float scroll = Input.GetAxis("Mouse ScrollWheel");
+        //if (scroll != 0f)
+        //{
+        //    zOffset = zOffset + scroll * zoomSpeed;
+        //    zOffset = Mathf.Min(zOffset, zOffsetUpperLimit);
+        //    zOffset = Mathf.Max(zOffset, zOffsetLowerLimit);
+        //}
+
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         if (scroll != 0f)
         {
-            zOffset = zOffset + scroll * zoomSpeed;
-            zOffset = Mathf.Min(zOffset, zOffsetUpperLimit);
-            zOffset = Mathf.Max(zOffset, zOffsetLowerLimit);
+            float newFov = gameObject.GetComponent<Camera>().fieldOfView + scroll * zoomSpeed;
+            newFov = Mathf.Min(newFov, 70);
+            newFov = Mathf.Max(newFov, 20);
+            gameObject.GetComponent<Camera>().fieldOfView = newFov;
         }
 
 

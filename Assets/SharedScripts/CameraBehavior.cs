@@ -23,7 +23,7 @@ public class CameraBehavior : MonoBehaviour
     public float zoomSpeed = 50f;
     public float xOffset = 0f;
     public float yOffset = 50f;
-    public float zOffset = -50f;
+    public float zOffset = -70f;
 
     public float zOffsetUpperLimit = -10f;
     public float zOffsetLowerLimit = -150f;
@@ -46,7 +46,7 @@ public class CameraBehavior : MonoBehaviour
         if (scroll != 0f)
         {
             float newFov = gameObject.GetComponent<Camera>().fieldOfView + scroll * zoomSpeed;
-            newFov = Mathf.Min(newFov, 70);
+            newFov = Mathf.Min(newFov, 90);
             newFov = Mathf.Max(newFov, 20);
             gameObject.GetComponent<Camera>().fieldOfView = newFov;
         }

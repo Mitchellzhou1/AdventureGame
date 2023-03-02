@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4318276484743063061}
   - component: {fileID: 3989603195400780823}
   - component: {fileID: -1202903836161196571}
+  - component: {fileID: -4191311854115058323}
   m_Layer: 0
   m_Name: collect effects
   m_TagString: Untagged
@@ -4883,7 +4884,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4388efc611fb1ae468646f54ff1c4730, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.387
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4967,3 +4968,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-4191311854115058323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9056820388832005552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c62d522666998f947860c1c298363123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 2

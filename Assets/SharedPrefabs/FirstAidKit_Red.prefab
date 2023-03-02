@@ -128,3 +128,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthAmount: 25
+  explosion: {fileID: 9056820388832005552, guid: 7611ed9cb8960f44da9ad493fe59a5cd, type: 3}

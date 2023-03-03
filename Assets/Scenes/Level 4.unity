@@ -9218,6 +9218,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0.87
       objectReference: {fileID: 0}
+    - target: {fileID: 7432066723800833481, guid: c8d55d47eacdd0c42b698c2a1d462acd, type: 3}
+      propertyPath: nextLevel
+      value: Win Screen
+      objectReference: {fileID: 0}
     - target: {fileID: 7432066723800833483, guid: c8d55d47eacdd0c42b698c2a1d462acd, type: 3}
       propertyPath: m_IsTrigger
       value: 1

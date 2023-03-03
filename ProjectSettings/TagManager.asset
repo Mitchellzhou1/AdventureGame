@@ -13,6 +13,7 @@ TagManager:
   - OtherDoor
   - Key2
   - Door2
+  - AUDIO
   layers:
   - Default
   - TransparentFX

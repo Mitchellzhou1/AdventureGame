@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     GameManager _gameManager;
     Camera mainCam;
     bool hasKey;
+    int numKey2;
     int health;
     public string nextLevel;
     
@@ -18,6 +19,7 @@ public class Player : MonoBehaviour
         _gameManager = GameObject.FindObjectOfType<GameManager>();
         mainCam = Camera.main;
         hasKey = false;
+        numKey2 = 0;
 
     }
 
@@ -38,7 +40,11 @@ public class Player : MonoBehaviour
             print("You have picked up the key");
             hasKey = true;
             Destroy(other.gameObject);
-
+        }
+        if (other.CompareTag("Key2")){
+            print("You have picked up the key2");
+            numKey2+=1;
+            Destroy(other.gameObject);
         }
         else if (other.CompareTag("Sprint Zombie") || other.CompareTag("Jog Zombie") || other.CompareTag("Walk Zombie")){
             _gameManager.healthChanger(-15);
@@ -58,6 +64,15 @@ public class Player : MonoBehaviour
             if (hasKey){
                 hasKey = false;
                 _gameManager.goToScene(nextLevel);
+            }
+            else
+                print("You don't have the key! Please collect it and come back");
+        }
+        else if (other.CompareTag("Door2")){
+            if (numKey2>0){
+                numKey2 -= 1;
+                print(numKey2);
+                Destroy(other.gameObject);
             }
             else
                 print("You don't have the key! Please collect it and come back");

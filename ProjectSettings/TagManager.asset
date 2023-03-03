@@ -11,6 +11,8 @@ TagManager:
   - Door
   - Healthpack
   - OtherDoor
+  - Key2
+  - Door2
   layers:
   - Default
   - TransparentFX

@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     int health;
     public string nextLevel;
     
+    private bool isDead = false;
+
     void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
@@ -26,7 +28,7 @@ public class Player : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)){
+        if (Input.GetMouseButtonDown(0) && !isDead){
             RaycastHit hit;
             if (Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out hit, 300)){
                 print(hit.point);
@@ -36,14 +38,16 @@ public class Player : MonoBehaviour
     }
 
     public void handleDeath() {
+        isDead = true;
+
         // disable animator to play rigidbody. Disabling animator somehow send 
         // the player flying into air as a workaround, lock the player position before disabling animator.
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
 
 
         GetComponent<Animator>().enabled = false;
-        // set speed to 0.
-        // GetComponent<NavMeshAgent>().speed = 0;
+        
+        GetComponent<NavMeshAgent>().enabled = false;
     }
 
     private void OnTriggerEnter(Collider other){

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    
+
     int health = 75;
     string levelName;
 
@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public TMPro.TextMeshProUGUI levelUI;
 
     public AudioSource playerPainAudio;
+
+    public GameObject GotHitScreen;
 
     // private void Awake()
     // {
@@ -33,17 +35,37 @@ public class GameManager : MonoBehaviour
         {
             _player = GameObject.FindGameObjectsWithTag("Player")[0];
 
-        } catch { }
+        }
+        catch { }
 
     }
 
-    void Update(){
+    void Update()
+    {
 #if !UNITY_WEBGL
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
+
+
+
+
+        // got hit screen
+        if (GotHitScreen.GetComponent<Image>().color.a > 0.0f)
+        {
+            var color = GotHitScreen.GetComponent<Image>().color;
+            color.a -= 0.001f;
+            GotHitScreen.GetComponent<Image>().color = color;
+        }
 #endif
+    }
+
+    void gotHitScreen()
+    {
+        var color = GotHitScreen.GetComponent<Image>().color;
+        color.a = 0.8f;
+        GotHitScreen.GetComponent<Image>().color = color;
     }
 
     public void healthChanger(int number)
@@ -55,28 +77,35 @@ public class GameManager : MonoBehaviour
         if (health < temp && health > 0)
         {
             playerPainAudio.Play();
+            gotHitScreen();
         }
 
-        if (health >= 100){
+        if (health >= 100)
+        {
             health = 100;
         }
-        if (health < 1){
+        if (health < 1)
+        {
             health = 0;
             goToScene("Death Screen");
         }
         healthUI.text = health.ToString();
     }
 
-    public int getHealth(){
+    public int getHealth()
+    {
         return health;
     }
 
 
-    public void goToScene(string scene){
+    public void goToScene(string scene)
+    {
         StartCoroutine(sceneHelper(scene, 1));
     }
 
-    IEnumerator sceneHelper (string scene, int seconds) {
+    IEnumerator sceneHelper(string scene, int seconds)
+    {
         yield return new WaitForSeconds(seconds);
         SceneManager.LoadScene(scene);
     }
+}

@@ -47,18 +47,17 @@ public class GameManager : MonoBehaviour
         {
             Application.Quit();
         }
+#endif
+    }
 
-
-
-
-        // got hit screen
+    void FixedUpdate() {
+                // got hit screen
         if (GotHitScreen.GetComponent<Image>().color.a > 0.0f)
         {
             var color = GotHitScreen.GetComponent<Image>().color;
-            color.a -= 0.001f;
+            color.a -= 0.005f;
             GotHitScreen.GetComponent<Image>().color = color;
         }
-#endif
     }
 
     void gotHitScreen()

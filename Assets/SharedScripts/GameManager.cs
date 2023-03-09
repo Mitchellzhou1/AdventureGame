@@ -64,10 +64,10 @@ public class GameManager : MonoBehaviour
 
     }
 
-    void gotHitScreen()
+    void gotHitScreen(float intensity=0.5f)
     {
         var color = GotHitScreen.GetComponent<Image>().color;
-        color.a = 0.8f;
+        color.a = intensity;
         GotHitScreen.GetComponent<Image>().color = color;
     }
 
@@ -96,6 +96,7 @@ public class GameManager : MonoBehaviour
             _player.GetComponent<Player>().handleDeath();
             if (!deathScreamAlreadyPlayed) {
                 playerDeathAudio.Play();
+                gotHitScreen(0.9f);
                 deathScreamAlreadyPlayed = true;
             }
             goToScene("Death Screen", 8);

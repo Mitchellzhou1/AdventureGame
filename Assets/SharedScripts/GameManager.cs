@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public TMPro.TextMeshProUGUI levelUI;
 
     public AudioSource playerPainAudio;
+    public AudioSource playerDeathAudio;
 
     public GameObject GotHitScreen;
 
@@ -51,13 +52,16 @@ public class GameManager : MonoBehaviour
     }
 
     void FixedUpdate() {
-                // got hit screen
+
+
+        // got hit screen
         if (GotHitScreen.GetComponent<Image>().color.a > 0.0f)
         {
             var color = GotHitScreen.GetComponent<Image>().color;
-            color.a -= 0.005f;
+            color.a -= 0.01f;
             GotHitScreen.GetComponent<Image>().color = color;
         }
+
     }
 
     void gotHitScreen()
@@ -67,6 +71,8 @@ public class GameManager : MonoBehaviour
         GotHitScreen.GetComponent<Image>().color = color;
     }
 
+
+    private bool deathScreamAlreadyPlayed = false;
     public void healthChanger(int number)
     {
 
@@ -86,7 +92,13 @@ public class GameManager : MonoBehaviour
         if (health < 1)
         {
             health = 0;
-            goToScene("Death Screen");
+
+            _player.GetComponent<Player>().handleDeath();
+            if (!deathScreamAlreadyPlayed) {
+                playerDeathAudio.Play();
+                deathScreamAlreadyPlayed = true;
+            }
+            goToScene("Death Screen", 8);
         }
         healthUI.text = health.ToString();
     }
@@ -97,9 +109,9 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void goToScene(string scene)
+    public void goToScene(string scene, int waitFor=1)
     {
-        StartCoroutine(sceneHelper(scene, 1));
+        StartCoroutine(sceneHelper(scene, waitFor));
     }
 
     IEnumerator sceneHelper(string scene, int seconds)

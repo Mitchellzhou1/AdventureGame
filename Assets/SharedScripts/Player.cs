@@ -35,6 +35,17 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void handleDeath() {
+        // disable animator to play rigidbody. Disabling animator somehow send 
+        // the player flying into air as a workaround, lock the player position before disabling animator.
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+
+
+        GetComponent<Animator>().enabled = false;
+        // set speed to 0.
+        // GetComponent<NavMeshAgent>().speed = 0;
+    }
+
     private void OnTriggerEnter(Collider other){
         if (other.CompareTag("Key") && hasKey == false){
             print("You have picked up the key");

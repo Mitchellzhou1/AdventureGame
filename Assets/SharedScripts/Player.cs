@@ -41,12 +41,12 @@ public class Player : MonoBehaviour
         isDead = true;
 
         // disable animator to play rigidbody. Disabling animator somehow send 
-        // the player flying into air as a workaround, lock the player position before disabling animator.
+        // the player flying into air. As a workaround, lock the player position before disabling animator.
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
 
 
         GetComponent<Animator>().enabled = false;
-        
+
         GetComponent<NavMeshAgent>().enabled = false;
     }
 

@@ -1001,6 +1001,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthUI: {fileID: 0}
   levelUI: {fileID: 0}
+  playerPainAudio: {fileID: 0}
 --- !u!4 &1335571725
 Transform:
   m_ObjectHideFlags: 0

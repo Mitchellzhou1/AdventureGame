@@ -14,17 +14,27 @@ public class GameManager : MonoBehaviour
     public TMPro.TextMeshProUGUI healthUI;
     public TMPro.TextMeshProUGUI levelUI;
 
+    public AudioSource playerPainAudio;
+
     // private void Awake()
     // {
     //     Scene scene = SceneManager.GetActiveScene();
     //     levelName = scene.name;
     // }
 
+    private GameObject _player;
     void Start()
     {
         Scene scene = SceneManager.GetActiveScene();
         healthUI.text = health.ToString();
         levelUI.text = scene.name.ToString();
+
+        try
+        {
+            _player = GameObject.FindGameObjectsWithTag("Player")[0];
+
+        } catch { }
+
     }
 
     void Update(){
@@ -38,7 +48,15 @@ public class GameManager : MonoBehaviour
 
     public void healthChanger(int number)
     {
+
+        int temp = health;
         health += number;
+
+        if (health < temp && health > 0)
+        {
+            playerPainAudio.Play();
+        }
+
         if (health >= 100){
             health = 100;
         }
@@ -62,4 +80,3 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         SceneManager.LoadScene(scene);
     }
-}

@@ -8646,6 +8646,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8d55d47eacdd0c42b698c2a1d462acd, type: 3}
+--- !u!1 &1181309883 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7432066723800833329, guid: c8d55d47eacdd0c42b698c2a1d462acd, type: 3}
+  m_PrefabInstance: {fileID: 1181309882}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1200017992
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10959,6 +10964,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 2397263961442443386, guid: 33a41fdcf62ee8f4f9e1ab25a3945e37, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1181309883}
     - target: {fileID: 2397263961442443386, guid: 33a41fdcf62ee8f4f9e1ab25a3945e37, type: 3}
       propertyPath: levelUI
       value: 

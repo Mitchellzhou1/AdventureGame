@@ -7016,7 +7016,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7292724400421655351, guid: e5f8d33cf4b8e3043a1e05f987ddb703, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 119.579155
+      value: 414
       objectReference: {fileID: 0}
     - target: {fileID: 7292724400421655351, guid: e5f8d33cf4b8e3043a1e05f987ddb703, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7024,7 +7024,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7292724400421655351, guid: e5f8d33cf4b8e3043a1e05f987ddb703, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 789.774
+      value: 821.2
       objectReference: {fileID: 0}
     - target: {fileID: 7292724400421655351, guid: e5f8d33cf4b8e3043a1e05f987ddb703, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9097,6 +9097,10 @@ PrefabInstance:
       value: Game Manager
       objectReference: {fileID: 0}
     - target: {fileID: 2397263961442443386, guid: 33a41fdcf62ee8f4f9e1ab25a3945e37, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1181309883}
+    - target: {fileID: 2397263961442443386, guid: 33a41fdcf62ee8f4f9e1ab25a3945e37, type: 3}
       propertyPath: levelUI
       value: 
       objectReference: {fileID: 2011588583}
@@ -10623,6 +10627,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8d55d47eacdd0c42b698c2a1d462acd, type: 3}
+--- !u!1 &1181309883 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7432066723800833329, guid: c8d55d47eacdd0c42b698c2a1d462acd, type: 3}
+  m_PrefabInstance: {fileID: 1181309882}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1190437490
 GameObject:
   m_ObjectHideFlags: 0

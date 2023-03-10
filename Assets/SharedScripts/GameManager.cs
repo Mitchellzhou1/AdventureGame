@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     //     levelName = scene.name;
     // }
 
-    private GameObject _player;
+    public GameObject _player;
     void Start()
     {
         Scene scene = SceneManager.GetActiveScene();
@@ -34,12 +34,12 @@ public class GameManager : MonoBehaviour
         if (levelUI != null) levelUI.text = scene.name.ToString();
         if (healthPackUI != null) healthPackUI.text = sharedVariable.getHealthPackNum().ToString();
 
-        try
-        {
-            _player = GameObject.FindGameObjectsWithTag("Player")[0];
+        //try
+        //{
+        //    _player = GameObject.FindGameObjectsWithTag("Player")[0];
 
-        }
-        catch { }
+        //}
+        //catch { }
 
     }
 
@@ -96,12 +96,16 @@ public class GameManager : MonoBehaviour
         {
             health = 0;
 
-            _player.GetComponent<Player>().handleDeath();
             if (!deathScreamAlreadyPlayed) {
                 playerDeathAudio.Play();
                 gotHitScreen(0.9f);
                 deathScreamAlreadyPlayed = true;
             }
+
+            // _player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+            // _player.GetComponent<Animator>().enabled = false;
+            // _player.GetComponent<Player>().isDead = true;
+            _player.GetComponent<Player>().handleDeath();
             goToScene("Death Screen", 5);
         }
         healthUI.text = health.ToString();

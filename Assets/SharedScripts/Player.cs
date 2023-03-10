@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     int health;
     public string nextLevel;
     
-    private bool isDead = false;
+    public bool isDead = false;
 
     private bool isIdle = true;
 
@@ -82,10 +82,8 @@ public class Player : MonoBehaviour
         // disable animator to play rigidbody. Disabling animator somehow send 
         // the player flying into air. As a workaround, lock the player position before disabling animator.
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
-
         GetComponent<Animator>().enabled = false;
-
-        GetComponent<NavMeshAgent>().enabled = false;
+        // GetComponent<NavMeshAgent>().enabled = false;
     }
 
     private void OnTriggerEnter(Collider other){

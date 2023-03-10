@@ -7852,6 +7852,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2397263960909917536, guid: 33a41fdcf62ee8f4f9e1ab25a3945e37, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 3555.9468
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397263960909917536, guid: 33a41fdcf62ee8f4f9e1ab25a3945e37, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 2768.8364
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397263960909917536, guid: 33a41fdcf62ee8f4f9e1ab25a3945e37, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 8.0662
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397263960909917536, guid: 33a41fdcf62ee8f4f9e1ab25a3945e37, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -34.2058
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397263960909917543, guid: 33a41fdcf62ee8f4f9e1ab25a3945e37, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2397263961442443269, guid: 33a41fdcf62ee8f4f9e1ab25a3945e37, type: 3}
       propertyPath: m_Name
       value: Game Manager

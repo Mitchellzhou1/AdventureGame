@@ -30,9 +30,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Scene scene = SceneManager.GetActiveScene();
-        healthUI.text = health.ToString();
-        levelUI.text = scene.name.ToString();
-        healthPackUI.text = sharedVariable.getHealthPackNum().ToString();
+        if (healthUI != null) healthUI.text = health.ToString();
+        if (levelUI != null) levelUI.text = scene.name.ToString();
+        if (healthPackUI != null) healthPackUI.text = sharedVariable.getHealthPackNum().ToString();
 
         try
         {
@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
 
 
         // got hit screen
+        if (GotHitScreen == null) return;
         if (GotHitScreen.GetComponent<Image>().color.a > 0.0f)
         {
             var color = GotHitScreen.GetComponent<Image>().color;
@@ -84,16 +85,13 @@ public class GameManager : MonoBehaviour
         int temp = health;
         health += number;
 
-        if (health < temp && health > 0)
+        if (health < temp && health >= 1)
         {
             playerPainAudio.Play();
             gotHitScreen();
         }
 
-        if (health >= 100)
-        {
-            health = 100;
-        }
+        if (health >= 100) health = 100;
         if (health < 1)
         {
             health = 0;

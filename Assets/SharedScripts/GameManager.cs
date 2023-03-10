@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour
                 gotHitScreen(0.9f);
                 deathScreamAlreadyPlayed = true;
             }
-            goToScene("Death Screen", 8);
+            goToScene("Death Screen", 5);
         }
         healthUI.text = health.ToString();
     }

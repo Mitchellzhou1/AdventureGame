@@ -4298,6 +4298,7 @@ GameObject:
   - component: {fileID: 7432066723800833481}
   - component: {fileID: 7432066723800833482}
   - component: {fileID: 7432066723800833483}
+  - component: {fileID: 3918646200888083576}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4387,6 +4388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextLevel: Main Menu
+  isDead: 0
 --- !u!195 &7432066723800833482
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4422,6 +4424,14 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.9549267, z: 1}
   m_Center: {x: 0, y: 0.9570329, z: 0}
+--- !u!81 &3918646200888083576
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7432066723800833329}
+  m_Enabled: 1
 --- !u!1 &7432066723838416040
 GameObject:
   m_ObjectHideFlags: 0

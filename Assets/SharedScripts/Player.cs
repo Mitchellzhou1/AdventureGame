@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     
     private bool isDead = false;
 
+    private bool isIdle = true;
+
     void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
@@ -28,11 +30,22 @@ public class Player : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !isDead){
+
+        if (isDead) return;
+
+        if (Input.GetMouseButtonDown(0)){
             RaycastHit hit;
             if (Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out hit, 300)){
                 print(hit.point);
                 _navMeshAgent.destination = hit.point;
+
+                if (isIdle)
+                {
+                    Debug.Log("Running Animation");
+                    isIdle = false;
+                    GetComponent<Animator>().SetBool("isRunning", true);
+                    //GetComponent<Animator>().Play("Running");
+                }
             }
         }
         if(Input.GetKeyDown("space")){
@@ -43,6 +56,22 @@ public class Player : MonoBehaviour
                 _gameManager.healthChanger(25);
                 sharedVariable.updateHealthPackNum(-1);
                 _gameManager.updateHealthPackCount();
+            }
+        }
+
+
+        // change animation state to idle when reached path.
+        if (!_navMeshAgent.pathPending && !isIdle)
+        {
+            if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
+            {
+                if (!_navMeshAgent.hasPath || _navMeshAgent.velocity.sqrMagnitude == 0f)
+                {
+                    // Done
+                    Debug.Log("Idle Animation");
+                    GetComponent<Animator>().SetBool("isRunning", false);
+                    isIdle = true;
+                }
             }
         }
     }

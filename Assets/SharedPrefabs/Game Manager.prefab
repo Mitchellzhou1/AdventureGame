@@ -230,6 +230,7 @@ MonoBehaviour:
   playerPainAudio: {fileID: 2397263961442443385}
   playerDeathAudio: {fileID: 8443709804129858509}
   GotHitScreen: {fileID: 2397263960909917537}
+  _player: {fileID: 0}
 --- !u!82 &2397263961442443385
 AudioSource:
   m_ObjectHideFlags: 0
@@ -240,7 +241,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1ac4279b3ae0112468317d36c3ae5f2e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: da4310e90e0e1044b8b280b073582cc4, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

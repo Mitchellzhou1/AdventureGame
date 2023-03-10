@@ -10,10 +10,30 @@ public class Zombie : MonoBehaviour
     public float milliseconds;
     public float LOSDistance = 100.0f;
 
+    public AudioSource zombiegroan;
+
+    float randomTiming;
+
     void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
+        StartCoroutine(Groan());
+    }
+
+    IEnumerator Groan()
+    {
+        while(true)
+        {
+            zombiegroan.Play();
+            randomTiming = Random.Range(4.0f, 15.0f);
+            yield return new WaitForSeconds(randomTiming);
+        }
+    }
+
+    void Update()
+    {
+
     }
 
     void FixedUpdate(){

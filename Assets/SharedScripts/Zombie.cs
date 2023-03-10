@@ -9,11 +9,21 @@ public class Zombie : MonoBehaviour
     GameObject player;
     public float milliseconds;
 
+
     void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
-        StartCoroutine(ChasePlayer());
+    }
+
+    void FixedUpdate(){
+
+        RaycastHit hit;
+        int layerMask = 1 << 6;
+        if(Physics.Raycast(transform.position,transform.TransformDirection(Vector3.forward),out hit, 100.0f,layerMask)){
+            print("SPOTTED");
+            StartCoroutine(ChasePlayer());
+        }
     }
 
     IEnumerator ChasePlayer(){

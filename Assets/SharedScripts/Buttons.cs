@@ -16,7 +16,7 @@ public class Buttons : MonoBehaviour
 #endif
 
 #if UNITY_WEBGL
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Main Menu");
 #endif
 
 

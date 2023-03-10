@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     string levelName;
 
     public TMPro.TextMeshProUGUI healthUI;
+    public TMPro.TextMeshProUGUI healthPackUI;
     public TMPro.TextMeshProUGUI levelUI;
 
     public AudioSource playerPainAudio;
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
         Scene scene = SceneManager.GetActiveScene();
         healthUI.text = health.ToString();
         levelUI.text = scene.name.ToString();
+        healthPackUI.text = sharedVariable.getHealthPackNum().ToString();
 
         try
         {
@@ -71,6 +73,9 @@ public class GameManager : MonoBehaviour
         GotHitScreen.GetComponent<Image>().color = color;
     }
 
+    public void updateHealthPackCount(){
+        healthPackUI.text = sharedVariable.getHealthPackNum().ToString();
+    }
 
     private bool deathScreamAlreadyPlayed = false;
     public void healthChanger(int number)

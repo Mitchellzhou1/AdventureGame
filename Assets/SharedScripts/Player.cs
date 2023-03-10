@@ -35,6 +35,16 @@ public class Player : MonoBehaviour
                 _navMeshAgent.destination = hit.point;
             }
         }
+        if(Input.GetKeyDown("space")){
+            if(sharedVariable.getHealthPackNum()<=0){
+                print("Oh No! No health packs left!!");
+            }
+            else{
+                _gameManager.healthChanger(25);
+                sharedVariable.updateHealthPackNum(-1);
+                _gameManager.updateHealthPackCount();
+            }
+        }
     }
 
     public void handleDeath() {
@@ -93,7 +103,8 @@ public class Player : MonoBehaviour
                 print("You don't have the key! Please collect it and come back");
         }
         else if (other.CompareTag("Healthpack")){
-            _gameManager.healthChanger(25);
+            sharedVariable.updateHealthPackNum(1);
+            _gameManager.updateHealthPackCount();
         }
     }
 }

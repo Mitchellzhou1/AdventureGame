@@ -22,7 +22,7 @@ public class CameraBehavior : MonoBehaviour
     public float smoothSpeed = 0.125f;
     public float zoomSpeed = 50f;
     public float xOffset = 0f;
-    public float yOffset = 50f;
+    public float yOffset = 0f;
     public float zOffset = -70f;
 
     public float zOffsetUpperLimit = -10f;

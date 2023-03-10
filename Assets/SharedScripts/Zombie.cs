@@ -8,7 +8,7 @@ public class Zombie : MonoBehaviour
     NavMeshAgent _navMeshAgent;
     GameObject player;
     public float milliseconds;
-
+    public float LOSDistance = 100.0f;
 
     void Start()
     {
@@ -20,7 +20,7 @@ public class Zombie : MonoBehaviour
 
         RaycastHit hit;
         int layerMask = 1 << 6;
-        if(Physics.Raycast(transform.position,transform.TransformDirection(Vector3.forward),out hit, 100.0f,layerMask)){
+        if(Physics.Raycast(transform.position,transform.TransformDirection(Vector3.forward),out hit, LOSDistance,layerMask)){
             print("SPOTTED");
             StartCoroutine(ChasePlayer());
         }
